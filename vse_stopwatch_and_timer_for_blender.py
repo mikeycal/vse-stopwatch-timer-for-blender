@@ -102,6 +102,10 @@ for scene in bpy.data.scenes:
         except AttributeError:                                                 #  | When VSE is empty, there is no Attribute , so we catch the error.
             print("VSE EMPTY")
 
+print(start_at_frame)
+print(end_frame_of_project)
+print(total_number_of_frames)
+
 the_time_in_secs = total_number_of_frames / the_framerate
 time_per_frame = the_time_in_secs / total_number_of_frames
 
@@ -115,7 +119,7 @@ first_time_in_loop = True
 seq = bpy.context.scene.sequence_editor_create()
 bpy.ops.sequencer.select_all(action='DESELECT')                                #  | This prevents other strips from being put in metastrip
 
-while start_at_frame <= total_number_of_frames:   
+while start_at_frame <= end_frame_of_project:   
     seq.sequences.new_effect(str(start_at_frame), type='TEXT', \
     channel=the_channel, frame_start=start_at_frame, \
     frame_end=(start_at_frame + 1))
