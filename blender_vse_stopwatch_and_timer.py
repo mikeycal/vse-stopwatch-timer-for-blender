@@ -1,6 +1,6 @@
 ########################### BEGIN GPL LICENSE BLOCK ############################
 #
-#     VIDEO SEQUENCE EDITOR STOPWATCH / TIMER FOR BLENDER
+#     VIDEO SEQUENCE EDITOR STOPWATCH & TIMER FOR BLENDER
 #     Copyright (C) 2017 Mike Meyers 
 #
 #     This program is free software; you can redistribute it and/or
