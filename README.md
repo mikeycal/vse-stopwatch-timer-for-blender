@@ -7,10 +7,12 @@
 - resize it, move it, change its color, add a shadow, use it with effect strips or even animate its properties with keyframes. 
 - PLEASE view the "known issues" for this Script [here](https://github.com/mikeycal/vse-stopwatch-timer-for-blender/issues/1)
 
-## Timer Example:
+## Timer Example
 
 ![Timer](https://github.com/mikeycal/vse-stopwatch-timer-for-blender/blob/master/imgs/timer-example.gif)
-
+ 
+ _(Background video: (CC) Blender Foundation - http://www.tearsofsteel.org)_
+ 
 ## Setup
 
 1) Right Click on "Raw" -> "Save Link as..." on the following page:
