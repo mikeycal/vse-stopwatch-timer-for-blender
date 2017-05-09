@@ -43,14 +43,14 @@
 #
 # SOURCE LOCATION: https://github.com/mikeycal/vse-stopwatch-timer-for-blender
 #
-#   1) Set the [ User Preferences ] in this script
-#   2) Open Blender -> Switch any Blender Window to "Text Editor"
-#   3) Click "Open" (bottom of Text Editor) and select this Python File 
-#   4) Set the FPS and FRAME RANGE in the Blender render properties window
-#   5) Click "Run Script" (Bottom of Text Editor)
-#   6) Blender will create timestamps for the length of the FRAME RANGE
-#   7) If blender (Not Responding) the script is still running - wait for it. 
-#   8) Known Issues: https://github.com/mikeycal/blender-vse-stopwatch-and-timer/issues  
+#  1) Set the [ User Preferences ] in this script
+#  2) Open Blender -> Switch any Blender Window to "Text Editor"
+#  3) Click "Open" (bottom of Text Editor) and select this Python File 
+#  4) Set the FPS and FRAME RANGE in the Blender render properties window
+#  5) Click "Run Script" (Bottom of Text Editor)
+#  6) Blender will create timestamps for the length of the FRAME RANGE
+#  7) If blender (Not Responding) the script is still running - wait for it. 
+#  8) Issues: https://github.com/mikeycal/blender-vse-stopwatch-and-timer/issues  
 #_______________________________________________________________________________
 
 import bpy
@@ -116,14 +116,16 @@ seq = bpy.context.scene.sequence_editor_create()
 bpy.ops.sequencer.select_all(action='DESELECT')                                #  | This prevents other strips from being put in metastrip
 
 while start_at_frame <= total_number_of_frames:   
-    seq.sequences.new_effect(str(start_at_frame), type='TEXT', channel=1, \
-    frame_start=start_at_frame, frame_end=(start_at_frame+1))
+    seq.sequences.new_effect(str(start_at_frame), type='TEXT', \
+    channel=the_channel, frame_start=start_at_frame, \
+    frame_end=(start_at_frame + 1))
 
     if not count_in_reverse:
         if first_time_in_loop and show_starting_zero_frame: 
 
-            seq.sequences.new_effect("pre_frame", type='TEXT', channel=1, \
-            frame_start=start_at_frame - 1, frame_end=start_at_frame)
+            seq.sequences.new_effect("pre_frame", type='TEXT', \
+            channel=the_channel, frame_start=start_at_frame - 1, \
+            frame_end=start_at_frame)
 
             full_time = secondsToStr(0)   
 
@@ -179,8 +181,9 @@ while start_at_frame <= total_number_of_frames:
     
     if start_at_frame > total_number_of_frames and count_in_reverse \
     and show_ending_zero_frame:
-        seq.sequences.new_effect("post_frame", type='TEXT', channel=1, \
-        frame_start=start_at_frame, frame_end=start_at_frame + 1)
+        seq.sequences.new_effect("post_frame", type='TEXT', \
+        channel=the_channel, frame_start=start_at_frame, \
+        frame_end=start_at_frame + 1)
 
         full_time = secondsToStr(0)   
 
