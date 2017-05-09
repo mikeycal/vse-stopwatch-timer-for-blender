@@ -1,6 +1,6 @@
 ########################### BEGIN GPL LICENSE BLOCK ############################
 #
-#     THE BLENDER VSE STOPWATCH AND TIMER
+#     VIDEO SEQUENCE EDITOR STOPWATCH / TIMER FOR BLENDER
 #     Copyright (C) 2017 Mike Meyers 
 #
 #     This program is free software; you can redistribute it and/or
@@ -41,7 +41,7 @@
 
 #______________________________<[ INSTRUCTIONS ]>_______________________________
 #
-# SOURCE LOCATION: https://github.com/mikeycal/blender-vse-stopwatch-and-timer
+# SOURCE LOCATION: https://github.com/mikeycal/vse-stopwatch-timer-for-blender
 #
 #   1) Set the [ User Preferences ] in this script
 #   2) Open Blender -> Switch any Blender Window to "Text Editor"
