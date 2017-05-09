@@ -8,7 +8,11 @@
 
 ## Stopwatch Example:
 
-![Timer](https://github.com/mikeycal/vse-stopwatch-timer-for-blender/blob/master/imgs/final.gif)
+![Stopwatch](https://github.com/mikeycal/vse-stopwatch-timer-for-blender/blob/master/imgs/stopwatch-example.gif)
+
+## Timer Example:
+
+![Timer](https://github.com/mikeycal/vse-stopwatch-timer-for-blender/blob/master/imgs/timer-example.gif)
 
 ## Setup
 
