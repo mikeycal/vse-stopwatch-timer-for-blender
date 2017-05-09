@@ -1,4 +1,4 @@
-# Video Sequence Editor Stopwatch\Timer for Blender
+# Video Sequence Editor Stopwatch & Timer for Blender
 
 - Add a stopwatch or timer overlay to your blender videos
 - Count Up [Stopwatch] or Count Down [Timer]
