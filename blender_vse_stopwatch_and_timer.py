@@ -1,16 +1,32 @@
-#_______________________________________________________________________________
+########################### BEGIN GPL LICENSE BLOCK ############################
 #
-#   The Blender VSE Stopwatch and Timer
-#   https://github.com/mikeycal/blender-vse-stopwatch-and-timer
-#_______________________________________________________________________________
+#     THE BLENDER VSE STOPWATCH AND TIMER
+#     Copyright (C) 2017 Mike Meyers 
+#
+#     This program is free software; you can redistribute it and/or
+#     modify it under the terms of the GNU General Public License as 
+#     published by the Free Software Foundation; either version 3 
+#     of the License, or (at your option) any later version.
 
-#__________________________________< LICENSE >__________________________________
+#     This program is distributed in the hope that it will be useful,
+#     but WITHOUT ANY WARRANTY; without even the implied warranty of
+#     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#     GNU General Public License for more details.
+#     
+#     You should have received a copy of the GNU General Public License
+#     along with this program; if not, write to the Free Software Foundation,
+#     Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 #
-# Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0)
-# https://creativecommons.org/licenses/by-sa/3.0/
+############################ END GPL LICENSE BLOCK #############################
+
+#________________________________<[ CREDITS ]>__________________________________
 #
-# "secondsToStr()" function provided by Paul McGuire
+# "secondsToStr()" function was provided by Paul McGuire under the CC BY-SA 4.0 
+# Currently, the "CC BY-SA 4.0" License is "one way" compatible with the GPL 3 
+# Link to code:
 # http://stackoverflow.com/questions/1384406/python-convert-seconds-to-hhmmss/1384710#1384710
+# Link to Paul McGuire's Stack Exchange profile:
+# http://stackoverflow.com/users/165216/paul-mcguire
 #
 # All other code written by Mike Meyers
 #_______________________________________________________________________________
@@ -23,7 +39,9 @@
 #   Support Email [Paypal Donations Email] : mikeycaldotcom@yahoo.com
 #_______________________________________________________________________________
 
-#   Quick Instructions:
+#______________________________<[ INSTRUCTIONS ]>_______________________________
+#
+# SOURCE LOCATION: https://github.com/mikeycal/blender-vse-stopwatch-and-timer
 #
 #   1) Set the [ User Preferences ] in this script
 #   2) Open Blender -> Switch any Blender Window to "Text Editor"
