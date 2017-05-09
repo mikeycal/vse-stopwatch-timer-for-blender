@@ -14,7 +14,7 @@
 
 1) Right Click on "Raw" -> "Save Link as..." on the following page:
 
-https://github.com/mikeycal/vse-stopwatch-timer-for-blender/blob/master/vse-stopwatch-timer-for-blender.py
+https://github.com/mikeycal/vse-stopwatch-timer-for-blender/blob/master/vse_stopwatch_and_timer_for_blender.py
 
 2) Open your Blender project
 
