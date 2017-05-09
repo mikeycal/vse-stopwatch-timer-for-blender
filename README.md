@@ -4,17 +4,17 @@
 - Count Up [Stopwatch] or Count Down [Timer]
 - Uses "Text Effect" strips
   - resize it, move it, change the color, add a shadow 
-- PLEASE view the "known issues" for this Script [here](https://github.com/mikeycal/blender-vse-stopwatch-and-timer/issues/1)
+- PLEASE view the "known issues" for this Script [here](https://github.com/mikeycal/vse-stopwatch-timer-for-blender/issues/1)
 
 ## Stopwatch Example:
 
-![Timer](https://github.com/mikeycal/blender-vse-stopwatch-and-timer/blob/master/imgs/final.gif)
+![Timer](https://github.com/mikeycal/vse-stopwatch-timer-for-blender/blob/master/imgs/final.gif)
 
 ## Setup
 
 1) Right Click on "Raw" -> "Save Link as..." on the following page:
 
-https://github.com/mikeycal/blender-vse-stopwatch-and-timer/blob/master/blender_vse_stopwatch_and_timer.py
+https://github.com/mikeycal/vse-stopwatch-timer-for-blender/blob/master/vse-stopwatch-timer-for-blender.py
 
 2) Open your Blender project
 
@@ -42,7 +42,7 @@ At times you will need to edit this Python Script. So I would advise that you do
 - Simply change the values listed below to alter the size and look
 - Note:  A Stopwatch counts forward [default setting]. A Timer counts in reverse - aka a countdown
 
-![Settings](https://github.com/mikeycal/blender-vse-stopwatch-and-timer/blob/master/imgs/settings.JPG)
+![Settings](https://github.com/mikeycal/vse-stopwatch-timer-for-blender/blob/master/imgs/settings.JPG)
 
 - Change timer position:
   - Right click on the Meta Strip
@@ -57,12 +57,12 @@ Here is how you get the color values that can be used in place of the 1's in the
 - shadow_color = (0,0,0,1) [value is black]
   - an example of a blender RGBA value setting would be (0,**0.001**,1,1) which is blue
   
-![color-picker](https://github.com/mikeycal/blender-vse-stopwatch-and-timer/blob/master/imgs/color-pick.gif)
+![color-picker](https://github.com/mikeycal/vse-stopwatch-timer-for-blender/blob/master/imgs/color-pick.gif)
 
 ## How long should the script take to create Timestamps
 **(These are the results when using my INTEL i5 3570K 3.4Ghz processor)**
 
-![times](https://github.com/mikeycal/blender-vse-stopwatch-and-timer/blob/master/imgs/times.JPG)
+![times](https://github.com/mikeycal/vse-stopwatch-timer-for-blender/blob/master/imgs/times.JPG)
 
 - That's right... It takes 10 1/2 hours to create 300,000 timestamps. 
 - Setting _put_in_meta_strip = False_ may improve render time, but the Metastrip is easier to manipulate in the VSE. 
