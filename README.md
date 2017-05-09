@@ -72,7 +72,7 @@ Here is how you get the color values that can be used in place of the 1's in the
 - This script wouldn't be possible without the function provided at the following link:
 http://stackoverflow.com/questions/1384406/python-convert-seconds-to-hhmmss/1384710#1384710
 - Thanks to Paul McGuire: http://stackoverflow.com/users/165216/paul-mcguire
--Note: Stackoverflow code is provided under a cc by-sa 3.0 license. In section 4, part b, the cc by-sa 3.0 license, it states that users may choose to use "(ii) a later version of this License with the same License Elements as this License;" This allows me to switch to a cc by-sa 4.0 license, which is one-way compatible with the GPL 3. 
+- Note: Stackoverflow code is provided under a cc by-sa 3.0 license. In section 4, part b, the cc by-sa 3.0 license, it states that users may choose to use "(ii) a later version of this License with the same License Elements as this License;" This allows me to switch to a cc by-sa 4.0 license, which is one-way compatible with the GPL 3. 
 
  ## Support Me
  
