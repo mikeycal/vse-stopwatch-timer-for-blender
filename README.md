@@ -9,7 +9,7 @@
 
 ## Timer Example
 
-![Timer](https://github.com/mikeycal/vse-stopwatch-timer-for-blender/blob/master/imgs/timer-example.gif)
+![Timer](https://github.com/mikeycal/vse-stopwatch-timer-for-blender/blob/master/imgs/example.gif)
  
  _(Background video: (CC) Blender Foundation - http://www.tearsofsteel.org)_
  
