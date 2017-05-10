@@ -93,9 +93,9 @@ for scene in bpy.data.scenes:
         scene_name = scene.name
         the_framerate = scene.render.fps / scene.render.fps_base
         hold_start = start_at_frame = scene.frame_start
-        hold_start = hold_start - 1
         hold_end = end_frame_of_project = scene.frame_end 
-        hold_end = hold_end + 1
+        zero_start = hold_start - 1
+        zero_end = hold_end + 1
         total_number_of_frames = end_frame_of_project - start_at_frame + 1  
         found_scene = True
         the_channel = 1
@@ -164,33 +164,35 @@ while start_at_frame <= end_frame_of_project:
 
     if start_at_frame > end_frame_of_project:
         if not count_down_to_zero: 
-            seq.sequences.new_effect(str(hold_start + get_time), type='TEXT', \
-            channel=the_channel, frame_start=hold_start, \
-            frame_end=(hold_start + 1))
+            seq.sequences.new_effect(str(zero_start + get_time), type='TEXT', \
+            channel=the_channel, frame_start=zero_start, \
+            frame_end=(zero_start + 1))
             if milliseconds_to_frames:
                 final_print_string = "00:00:00:00"
             else: 
                 final_print_string = "00:00:00.000"
 
-            seq.sequences[str(hold_start + get_time)].text = final_print_string
-            seq.sequences[str(hold_start + get_time)].font_size = time_font_size
-            seq.sequences[str(hold_start + get_time)].color = time_color
-            seq.sequences[str(hold_start + get_time)].use_shadow = shadow
-            seq.sequences[str(hold_start + get_time)].shadow_color = shadow_color
+            seq.sequences[str(zero_start + get_time)].text = final_print_string
+            seq.sequences[str(zero_start + get_time)].font_size = time_font_size
+            seq.sequences[str(zero_start + get_time)].color = time_color
+            seq.sequences[str(zero_start + get_time)].use_shadow = shadow
+            seq.sequences[str(zero_start + get_time)].shadow_color = shadow_color
         else:
-            seq.sequences.new_effect(str(hold_end + get_time), type='TEXT', \
-            channel=the_channel, frame_start=hold_end, \
-            frame_end=(hold_end + 1))
-            if milliseconds_to_frames:
-                final_print_string = "00:00:00:00"
-            else: 
-                final_print_string = "00:00:00.000"
+            if final_print_string != "00:00:00.000":
 
-            seq.sequences[str(hold_end + get_time)].text = final_print_string
-            seq.sequences[str(hold_end + get_time)].font_size = time_font_size
-            seq.sequences[str(hold_end + get_time)].color = time_color
-            seq.sequences[str(hold_end + get_time)].use_shadow = shadow
-            seq.sequences[str(hold_end + get_time)].shadow_color = shadow_color
+                seq.sequences.new_effect(str(zero_end + get_time), type='TEXT', \
+                channel=the_channel, frame_start=zero_end, \
+                frame_end=(zero_end + 1))
+                if milliseconds_to_frames:
+                    final_print_string = "00:00:00:00"
+                else: 
+                    final_print_string = "00:00:00.000"
+
+                seq.sequences[str(zero_end + get_time)].text = final_print_string
+                seq.sequences[str(zero_end + get_time)].font_size = time_font_size
+                seq.sequences[str(zero_end + get_time)].color = time_color
+                seq.sequences[str(zero_end + get_time)].use_shadow = shadow
+                seq.sequences[str(zero_end + get_time)].shadow_color = shadow_color
 
 if put_in_meta_strip:
     bpy.ops.sequencer.meta_make()
