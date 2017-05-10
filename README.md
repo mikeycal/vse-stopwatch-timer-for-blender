@@ -4,7 +4,7 @@
 - Count Up [Stopwatch] or Count Down [Timer]
 - Places unique timestamps inside of each video frame using "Text Effect" strips
 - Encapsulates all the frames into a metastip making it easy to select, move, and group property settings.
-- resize it, move it, change its color, add a shadow, use it with effect strips or even animate its properties with keyframes. 
+- Resize it, move it, change its color, add a shadow, use it with effect strips or even animate its properties with keyframes. 
 - PLEASE view the "known issues" for this Script [here](https://github.com/mikeycal/vse-stopwatch-timer-for-blender/issues/1)
 
 ## Timer Example
