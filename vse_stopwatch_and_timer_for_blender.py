@@ -180,7 +180,7 @@ while start_at_frame <= end_frame_of_project:
 
     start_at_frame += 1
     
-    if start_at_frame > total_number_of_frames and count_down_to_zero \
+    if start_at_frame > end_frame_of_project and count_down_to_zero \
     and show_ending_zero_frame:
         seq.sequences.new_effect("post_frame" + str(get_time), type='TEXT', \
         channel=the_channel, frame_start=start_at_frame, \
