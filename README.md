@@ -3,7 +3,7 @@
 - Quickly add a stopwatch or timer to your blender video
 - Count Up [Stopwatch] or Count Down [Timer]
 - Places a sequential timestamp inside of each video frame using "Text Effect" strips.
-- Encapsulates all the frames into a metastip making it easy to select, move, and group property settings.
+- Encapsulates all the frames into a metastrip making it easy to select, move, and group property settings.
 - Resize it, move it, change its color, add a shadow, use it with effect strips or even animate the property settings with keyframes. 
 - PLEASE view the "known issues" for this Script [here](https://github.com/mikeycal/vse-stopwatch-timer-for-blender/issues/1)
 
