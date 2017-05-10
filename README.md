@@ -7,7 +7,7 @@
 - Resize it, move it, change its color, add a shadow, use it with effect strips or even animate the property settings with keyframes. 
 - PLEASE view the "known issues" for this Script [here](https://github.com/mikeycal/vse-stopwatch-timer-for-blender/issues/1)
 
-## Timer Example
+## Demo (Timer followed by Stopwatch)
 
 ![Timer](https://github.com/mikeycal/vse-stopwatch-timer-for-blender/blob/master/imgs/example.gif)
  
