@@ -1,10 +1,10 @@
 # Video Sequence Editor Stopwatch & Timer for Blender
 
-- Add a stopwatch or timer overlay to your blender videos
+- Quickly add a stopwatch or timer to your blender video
 - Count Up [Stopwatch] or Count Down [Timer]
-- Places unique timestamps inside of each video frame using "Text Effect" strips
+- Places a sequential timestamp inside of each video frame using "Text Effect" strips.
 - Encapsulates all the frames into a metastip making it easy to select, move, and group property settings.
-- Resize it, move it, change its color, add a shadow, use it with effect strips or even animate its properties with keyframes. 
+- Resize it, move it, change its color, add a shadow, use it with effect strips or even animate the property settings with keyframes. 
 - PLEASE view the "known issues" for this Script [here](https://github.com/mikeycal/vse-stopwatch-timer-for-blender/issues/1)
 
 ## Timer Example
@@ -23,16 +23,13 @@ https://github.com/mikeycal/vse-stopwatch-timer-for-blender/blob/master/vse_stop
 
 3) Set Project FPS, Start and End Frame (Script will create a timer between start and end frame)
 
-4) Switch an "Editor Window" to "Text Editor" using an Editor Menu
+4) Switch an "Editor Window" to "Text Editor" by the editor type from the Editor Menu
 
 Here is what an Editor Menu is: https://docs.blender.org/manual/en/dev/editors/
 
 5) Press "Open" and select "blender_vse_timer.py" in "Text Editor" window
 
 6) Press "Run Script"
-
-### Tip
-To render out a reusable timer sequence, create an empty blender project, set the start and end frame to the desired amount of time, and make sure you set the FPS to the same FPS as your final project. Then render the video out as a Transparent PNG image sequence. You can do this by selecting PNG as your output and selecting the "RGBA" option. You can then import the image sequence into your final project and place it where you like.
 
 ## Download a Source Code Editor that supports Python
 
