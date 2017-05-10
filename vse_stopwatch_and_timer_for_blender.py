@@ -178,7 +178,8 @@ while start_at_frame <= end_frame_of_project:
             seq.sequences[str(zero_start + get_time)].use_shadow = shadow
             seq.sequences[str(zero_start + get_time)].shadow_color = shadow_color
         else:
-            if final_print_string != "00:00:00.000":
+            if final_print_string != "00:00:00:00" and \
+            final_print_string != "00:00:00.000":
 
                 seq.sequences.new_effect(str(zero_end + get_time), type='TEXT', \
                 channel=the_channel, frame_start=zero_end, \
