@@ -114,8 +114,6 @@ if not count_down_to_zero:
 else:
     new_time_per_frame = the_time_in_secs + time_per_frame
 
-first_time_in_loop = True
-
 seq = bpy.context.scene.sequence_editor_create()
 bpy.ops.sequencer.select_all(action='DESELECT')                                #  | This prevents other strips from being put in metastrip
 
