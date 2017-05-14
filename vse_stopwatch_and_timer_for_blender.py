@@ -181,7 +181,7 @@ while start_at_frame <= end_frame_of_project:
                 if show_seconds:
                     final_print_string += "00"
                 if show_milliseconds:
-                    final_print_string += "00"
+                    final_print_string += ":00"
             else:
                 if show_hours:
                     final_print_string += "00:"
@@ -213,7 +213,7 @@ while start_at_frame <= end_frame_of_project:
                 if show_seconds:
                     final_print_string += "00"
                 if show_milliseconds:
-                    final_print_string += "00"
+                    final_print_string += ":00"
             else:
                 if show_hours:
                     final_print_string += "00:"
