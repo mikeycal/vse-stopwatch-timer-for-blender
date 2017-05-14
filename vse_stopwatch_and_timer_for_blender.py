@@ -1,4 +1,4 @@
-########################### BEGIN GPL LICENSE BLOCK ############################
+########################### BEGIN GPL LICENSE BLOCK ###########################
 #
 #     VIDEO SEQUENCE EDITOR STOPWATCH & TIMER FOR BLENDER
 #     Copyright (C) 2017 Mike Meyers 
@@ -17,41 +17,41 @@
 #     along with this program; if not, write to the Free Software Foundation,
 #     Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 #
-############################ END GPL LICENSE BLOCK #############################
+############################ END GPL LICENSE BLOCK ############################
 
-#________________________________<[ CREDITS ]>__________________________________
+#________________________________<[ CREDITS ]>_________________________________
 #
 # "secondsToStr()" function was provided by Paul McGuire under the CC BY-SA 4.0 
 # Currently, the "CC BY-SA 4.0" License is "one way" compatible with the GPL 3 
-# Link to code:
-# http://stackoverflow.com/questions/1384406/python-convert-seconds-to-hhmmss/1384710#1384710
+# Link to Paul McGuire's secondsToStr() function:
+# https://goo.gl/hTzJYM
 # Link to Paul McGuire's stackoverflow.com profile:
 # http://stackoverflow.com/users/165216/paul-mcguire
 #
 # All other code written by Mike Meyers
-#_______________________________________________________________________________
+#______________________________________________________________________________
 
-#____________________________<[ SUPPORT \ CONTACT ]>____________________________
+#____________________________<[ SUPPORT \ CONTACT ]>___________________________
 #
-#                  Programmed by Mike "Mikeycal" Meyers
-#                   Website: http://www.mikeycal.com
-#   Blender Video Editing Tutorials: https://www.youtube.com/user/MikeycalDOTcom
-#   Support Email [Paypal Donations Email] : mikeycaldotcom@yahoo.com
-#_______________________________________________________________________________
+# Programmed by Mike "Mikeycal" Meyers
+# Website: http://www.mikeycal.com
+# Blender Video Editing Tutorials: https://www.youtube.com/user/MikeycalDOTcom
+# Support Email [Paypal Donations Email] : mikeycaldotcom@yahoo.com
+#______________________________________________________________________________
 
-#______________________________<[ INSTRUCTIONS ]>_______________________________
+#______________________________<[ INSTRUCTIONS ]>______________________________
 #
 # SOURCE LOCATION: https://github.com/mikeycal/vse-stopwatch-timer-for-blender
 #
-#  1) Set the [ User Preferences ] in this script
-#  2) Open Blender -> Switch any Blender Window to "Text Editor"
-#  3) Click "Open" (bottom of Text Editor) and select this Python File 
-#  4) Set the FPS and FRAME RANGE in the Blender render properties window
-#  5) Click "Run Script" (Bottom of Text Editor)
-#  6) Blender will create timestamps for the length of the FRAME RANGE
-#  7) If blender (Not Responding) the script is still running - wait for it. 
-#  8) Issues: https://github.com/mikeycal/blender-vse-stopwatch-and-timer/issues  
-#_______________________________________________________________________________
+# 1) Set the [ User Preferences ] in this script
+# 2) Open Blender -> Switch any Blender Window to "Text Editor"
+# 3) Click "Open" (bottom of Text Editor) and select this Python File 
+# 4) Set the FPS and FRAME RANGE in the Blender render properties window
+# 5) Click "Run Script" (Bottom of Text Editor)
+# 6) Blender will create timestamps for the length of the FRAME RANGE
+# 7) If blender (Not Responding) the script is still running - wait for it. 
+# 8) Issues: https://github.com/mikeycal/blender-vse-stopwatch-and-timer/issues  
+#______________________________________________________________________________
 
 import bpy
 import time
@@ -59,8 +59,8 @@ from functools import reduce
 
 #---------------------------- [ USER PREFERENCES ] ----------------------------
                                                                                
-count_down_to_zero = False      # (Default: False) [True, False]                 | False = Stopwatch (Count up, starting from zero), True = Timer (Count down to zero)             
-put_in_meta_strip = True        # (Default: True) [True, False]                  | It's much easier to manipulate as a single Meta Strip
+count_down_to_zero = False      # (Default: False) [True, False]               #  | False = Stopwatch (Count up, starting from zero), True = Timer (Count down to zero)             
+put_in_meta_strip = True        # (Default: True) [True, False]                #  | It's much easier to manipulate as a single Meta Strip
                                                                                
 #Time Format
 show_hours = True               # (Default: True) [True, False]
@@ -68,12 +68,12 @@ show_minutes = True             # (Default: True) [True, False]
 show_seconds = True             # (Default: True) [True, False]
 show_milliseconds = True        # (Default: True) [True, False] 
 
-#display milliseconds as frames - like the VSE                                   | This requires that show_milliseconds = True
+#display milliseconds as frames - like the VSE                                 #  | This requires that show_milliseconds = True
 milliseconds_to_frames = False  # (Default: False) [True, False]
 
 #Time Color, Style, Size
 time_font_size = 200            # (Default: True) [int value] 
-time_color = (1,1,1,1)          # Default: (1,1,1,1) [the color white]           | (Red, Green, Blue, Alpha) uses floating point color values 
+time_color = (1,1,1,1)          # Default: (1,1,1,1) [the color white]         #  | (Red, Green, Blue, Alpha) uses floating point color values 
 shadow = True                   # (Default: True) [True, False]
 shadow_color = (0,0,0,1)        # Default: (0,0,0,1) [the color black]             
 
@@ -117,14 +117,20 @@ else:
 seq = bpy.context.scene.sequence_editor_create()
 bpy.ops.sequencer.select_all(action='DESELECT')                                #  | This prevents other strips from being put in metastrip
 
+first_frame = True
+
 while start_at_frame <= end_frame_of_project:
-   
-    seq.sequences.new_effect(str(start_at_frame + get_time), type='TEXT', \
+    
+    main_seq_name = str(start_at_frame + get_time)
+    seq.sequences.new_effect(main_seq_name, type='TEXT', \
     channel=the_channel, frame_start=start_at_frame, \
     frame_end=(start_at_frame + 1))
 
     if not count_down_to_zero:
-        new_time_per_frame += time_per_frame
+        if first_frame: 
+            first_frame = False                                                #  |  Use first frame value then turn to False to increment
+        else:
+            new_time_per_frame += time_per_frame
     else:
         new_time_per_frame = new_time_per_frame - time_per_frame
 
@@ -152,17 +158,18 @@ while start_at_frame <= end_frame_of_project:
         else:
             final_print_string += "." + ms 
 
-    seq.sequences[str(start_at_frame + get_time)].text = final_print_string
-    seq.sequences[str(start_at_frame + get_time)].font_size = time_font_size
-    seq.sequences[str(start_at_frame + get_time)].color = time_color
-    seq.sequences[str(start_at_frame + get_time)].use_shadow = shadow
-    seq.sequences[str(start_at_frame + get_time)].shadow_color = shadow_color
+    seq.sequences[main_seq_name].text = final_print_string
+    seq.sequences[main_seq_name].font_size = time_font_size
+    seq.sequences[main_seq_name].color = time_color
+    seq.sequences[main_seq_name].use_shadow = shadow
+    seq.sequences[main_seq_name].shadow_color = shadow_color
 
     start_at_frame += 1
 
     if start_at_frame > end_frame_of_project:
         if not count_down_to_zero: 
-            seq.sequences.new_effect(str(zero_start + get_time), type='TEXT', \
+            start_seq_name = str(zero_start + get_time)
+            seq.sequences.new_effect(start_seq_name, type='TEXT', \
             channel=the_channel, frame_start=zero_start, \
             frame_end=(zero_start + 1))
             if milliseconds_to_frames:
@@ -170,30 +177,32 @@ while start_at_frame <= end_frame_of_project:
             else: 
                 final_print_string = "00:00:00.000"
 
-            seq.sequences[str(zero_start + get_time)].text = final_print_string
-            seq.sequences[str(zero_start + get_time)].font_size = time_font_size
-            seq.sequences[str(zero_start + get_time)].color = time_color
-            seq.sequences[str(zero_start + get_time)].use_shadow = shadow
-            seq.sequences[str(zero_start + get_time)].shadow_color = shadow_color
+            seq.sequences[start_seq_name].text = final_print_string
+            seq.sequences[start_seq_name].font_size = time_font_size
+            seq.sequences[start_seq_name].color = time_color
+            seq.sequences[start_seq_name].use_shadow = shadow
+            seq.sequences[start_seq_name].shadow_color = shadow_color
         else:
             if final_print_string != "00:00:00:00" and \
             final_print_string != "00:00:00.000":
-
-                seq.sequences.new_effect(str(zero_end + get_time), type='TEXT', \
-                channel=the_channel, frame_start=zero_end, \
+                
+                end_seq_name = str(zero_end + get_time)
+                seq.sequences.new_effect(end_seq_name, \
+                type='TEXT', channel=the_channel, frame_start=zero_end, \
                 frame_end=(zero_end + 1))
                 if milliseconds_to_frames:
                     final_print_string = "00:00:00:00"
                 else: 
                     final_print_string = "00:00:00.000"
 
-                seq.sequences[str(zero_end + get_time)].text = final_print_string
-                seq.sequences[str(zero_end + get_time)].font_size = time_font_size
-                seq.sequences[str(zero_end + get_time)].color = time_color
-                seq.sequences[str(zero_end + get_time)].use_shadow = shadow
-                seq.sequences[str(zero_end + get_time)].shadow_color = shadow_color
+                seq.sequences[end_seq_name].text = final_print_string
+                seq.sequences[end_seq_name].font_size = time_font_size
+                seq.sequences[end_seq_name].color = time_color
+                seq.sequences[end_seq_name].use_shadow = shadow
+                seq.sequences[end_seq_name].shadow_color = shadow_color
 
 if put_in_meta_strip:
     bpy.ops.sequencer.meta_make()
-    my_metastrip = bpy.context.scene.sequence_editor.active_strip.name
-    bpy.data.scenes[scene_name].sequence_editor.sequences_all[my_metastrip].blend_type = "ALPHA_OVER"
+    my_meta = bpy.context.scene.sequence_editor.active_strip.name
+    for scene in bpy.data.scenes:
+        scene.sequence_editor.sequences_all[my_meta].blend_type = "ALPHA_OVER"
