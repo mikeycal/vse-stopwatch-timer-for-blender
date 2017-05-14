@@ -167,15 +167,30 @@ while start_at_frame <= end_frame_of_project:
     start_at_frame += 1
 
     if start_at_frame > end_frame_of_project:
+        final_print_string = ""
         if not count_down_to_zero: 
             start_seq_name = str(zero_start + get_time)
             seq.sequences.new_effect(start_seq_name, type='TEXT', \
             channel=the_channel, frame_start=zero_start, \
             frame_end=(zero_start + 1))
             if milliseconds_to_frames:
-                final_print_string = "00:00:00:00"
-            else: 
-                final_print_string = "00:00:00.000"
+                if show_hours:
+                    final_print_string += "00:"
+                if show_minutes:
+                    final_print_string += "00:"
+                if show_seconds:
+                    final_print_string += "00"
+                if show_milliseconds:
+                    final_print_string += "00"
+            else:
+                if show_hours:
+                    final_print_string += "00:"
+                if show_minutes:
+                    final_print_string += "00:"
+                if show_seconds:
+                    final_print_string += "00"
+                if show_milliseconds:
+                    final_print_string += ".000"
 
             seq.sequences[start_seq_name].text = final_print_string
             seq.sequences[start_seq_name].font_size = time_font_size
@@ -190,10 +205,24 @@ while start_at_frame <= end_frame_of_project:
                 seq.sequences.new_effect(end_seq_name, \
                 type='TEXT', channel=the_channel, frame_start=zero_end, \
                 frame_end=(zero_end + 1))
-                if milliseconds_to_frames:
-                    final_print_string = "00:00:00:00"
-                else: 
-                    final_print_string = "00:00:00.000"
+            if milliseconds_to_frames:
+                if show_hours:
+                    final_print_string += "00:"
+                if show_minutes:
+                    final_print_string += "00:"
+                if show_seconds:
+                    final_print_string += "00"
+                if show_milliseconds:
+                    final_print_string += "00"
+            else:
+                if show_hours:
+                    final_print_string += "00:"
+                if show_minutes:
+                    final_print_string += "00:"
+                if show_seconds:
+                    final_print_string += "00"
+                if show_milliseconds:
+                    final_print_string += ".000"
 
                 seq.sequences[end_seq_name].text = final_print_string
                 seq.sequences[end_seq_name].font_size = time_font_size
