@@ -59,23 +59,24 @@ from functools import reduce
 
 #---------------------------- [ USER PREFERENCES ] ----------------------------
                                                                                
-count_down_to_zero = False      # (Default: False) [True, False]               #  | False = Stopwatch (Count up, starting from zero), True = Timer (Count down to zero)             
-put_in_meta_strip = True        # (Default: True) [True, False]                #  | It's much easier to manipulate as a single Meta Strip
-                                                                               
+count_down_to_zero = False                 # (Default: False) [True, False]    #  | False = Stopwatch (Count up, starting from zero), True = Timer (Count down to zero)             
+put_in_meta_strip = True                   # (Default: True) [True, False]     #  | It's much easier to manipulate as a single Meta Strip
+                                                                  
 #Time Format
-show_hours = True               # (Default: True) [True, False]
-show_minutes = True             # (Default: True) [True, False]
-show_seconds = True             # (Default: True) [True, False]
-show_milliseconds = True        # (Default: True) [True, False] 
+show_start_and_end_zero_timestamp = True   # (Default: True) [True, False]     #  | Techically, first frame should be a time > 0 but often we still want to see the zeros
+show_hours = True                          # (Default: True) [True, False]
+show_minutes = True                        # (Default: True) [True, False]
+show_seconds = True                        # (Default: True) [True, False]
+show_milliseconds = True                   # (Default: True) [True, False] 
 
 #display milliseconds as frames - like the VSE                                 #  | This requires that show_milliseconds = True
-milliseconds_to_frames = False  # (Default: False) [True, False]
+milliseconds_to_frames = False             # (Default: False) [True, False]
 
 #Time Color, Style, Size
-time_font_size = 200            # (Default: True) [int value] 
-time_color = (1,1,1,1)          # Default: (1,1,1,1) [the color white]         #  | (Red, Green, Blue, Alpha) uses floating point color values 
-shadow = True                   # (Default: True) [True, False]
-shadow_color = (0,0,0,1)        # Default: (0,0,0,1) [the color black]             
+time_font_size = 200                       # (Default: True) [int value] 
+time_color = (1,1,1,1)                     # Default: (1,1,1,1)                #  | (Red, Green, Blue, Alpha) uses floating point color values 
+shadow = True                              # (Default: True) [True, False]    
+shadow_color = (0,0,0,1)                   # Default: (0,0,0,1)                #  | (Red, Green, Blue, Alpha) uses floating point color values 
 
 #-------------------------------------------------------------------------------
 
@@ -85,7 +86,7 @@ def secondsToStr(t):
         reduce(lambda ll,b : divmod(ll[0],b) + ll[1:],
             [(t*1000,),1000,60,60])
 
-get_time = time.time()                                                         #  | We add time to the strip name so we can add more time sequences
+get_time = str(round(time.time(),4))                                           #  | We add time to the strip name so we can add more time sequences
 found_scene = False
 
 for scene in bpy.data.scenes:
@@ -109,30 +110,29 @@ for scene in bpy.data.scenes:
 the_time_in_secs = total_number_of_frames / the_framerate
 time_per_frame = the_time_in_secs / total_number_of_frames
 
-if not count_down_to_zero: 
-    new_time_per_frame = time_per_frame
+if show_start_and_end_zero_timestamp:
+    add_project_frames = 2
+    if count_down_to_zero: 
+        new_time_per_frame = the_time_in_secs + time_per_frame
+    else:
+        new_time_per_frame = 0.0
+
 else:
-    new_time_per_frame = the_time_in_secs + time_per_frame
+    add_project_frames = 1
+    if count_down_to_zero: 
+        new_time_per_frame = the_time_in_secs + time_per_frame
+    else:
+        new_time_per_frame = time_per_frame
 
 seq = bpy.context.scene.sequence_editor_create()
 bpy.ops.sequencer.select_all(action='DESELECT')                                #  | This prevents other strips from being put in metastrip
 
-first_frame = True
+while start_at_frame <= (end_frame_of_project + add_project_frames):
 
-while start_at_frame <= end_frame_of_project:
-    
-    main_seq_name = str(start_at_frame + get_time)
+    main_seq_name = str(start_at_frame) + get_time
     seq.sequences.new_effect(main_seq_name, type='TEXT', \
     channel=the_channel, frame_start=start_at_frame, \
     frame_end=(start_at_frame + 1))
-
-    if not count_down_to_zero:
-        if first_frame: 
-            first_frame = False                                                #  |  Use first frame value then turn to False to increment
-        else:
-            new_time_per_frame += time_per_frame
-    else:
-        new_time_per_frame = new_time_per_frame - time_per_frame
 
     full_time = secondsToStr(new_time_per_frame)   
 
@@ -164,71 +164,12 @@ while start_at_frame <= end_frame_of_project:
     seq.sequences[main_seq_name].use_shadow = shadow
     seq.sequences[main_seq_name].shadow_color = shadow_color
 
+    if count_down_to_zero: 
+        new_time_per_frame = new_time_per_frame - time_per_frame               # decrement for next pass
+    else:
+        new_time_per_frame = new_time_per_frame + time_per_frame               # increment for next pass
+
     start_at_frame += 1
-
-    if start_at_frame > end_frame_of_project:
-        final_print_string = ""
-        if not count_down_to_zero: 
-            start_seq_name = str(zero_start + get_time)
-            seq.sequences.new_effect(start_seq_name, type='TEXT', \
-            channel=the_channel, frame_start=zero_start, \
-            frame_end=(zero_start + 1))
-            if milliseconds_to_frames:
-                if show_hours:
-                    final_print_string += "00:"
-                if show_minutes:
-                    final_print_string += "00:"
-                if show_seconds:
-                    final_print_string += "00"
-                if show_milliseconds:
-                    final_print_string += ":00"
-            else:
-                if show_hours:
-                    final_print_string += "00:"
-                if show_minutes:
-                    final_print_string += "00:"
-                if show_seconds:
-                    final_print_string += "00"
-                if show_milliseconds:
-                    final_print_string += ".000"
-
-            seq.sequences[start_seq_name].text = final_print_string
-            seq.sequences[start_seq_name].font_size = time_font_size
-            seq.sequences[start_seq_name].color = time_color
-            seq.sequences[start_seq_name].use_shadow = shadow
-            seq.sequences[start_seq_name].shadow_color = shadow_color
-        else:
-            if final_print_string != "00:00:00:00" and \
-            final_print_string != "00:00:00.000":
-                
-                end_seq_name = str(zero_end + get_time)
-                seq.sequences.new_effect(end_seq_name, \
-                type='TEXT', channel=the_channel, frame_start=zero_end, \
-                frame_end=(zero_end + 1))
-            if milliseconds_to_frames:
-                if show_hours:
-                    final_print_string += "00:"
-                if show_minutes:
-                    final_print_string += "00:"
-                if show_seconds:
-                    final_print_string += "00"
-                if show_milliseconds:
-                    final_print_string += ":00"
-            else:
-                if show_hours:
-                    final_print_string += "00:"
-                if show_minutes:
-                    final_print_string += "00:"
-                if show_seconds:
-                    final_print_string += "00"
-                if show_milliseconds:
-                    final_print_string += ".000"
-
-                seq.sequences[end_seq_name].text = final_print_string
-                seq.sequences[end_seq_name].font_size = time_font_size
-                seq.sequences[end_seq_name].color = time_color
-                seq.sequences[end_seq_name].use_shadow = shadow
-                seq.sequences[end_seq_name].shadow_color = shadow_color
 
 if put_in_meta_strip:
     bpy.ops.sequencer.meta_make()
