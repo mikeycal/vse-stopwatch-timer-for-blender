@@ -56,6 +56,7 @@
 import bpy
 import time
 from functools import reduce
+import math
 
 #---------------------------- [ USER PREFERENCES ] ----------------------------
                                                                                
@@ -149,7 +150,7 @@ while start_at_frame <= (end_frame_of_project + add_project_frames):
         final_print_string += s
     if show_milliseconds:
         if milliseconds_to_frames:
-            milliseconds_per_frame = 1000 / the_framerate 
+            milliseconds_per_frame = math.floor(1000 / the_framerate) 
             ms,remainder = divmod(float(ms),milliseconds_per_frame)
             final_print_string += ":" 
             if ms <= 9:
