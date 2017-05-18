@@ -5,7 +5,7 @@
 - Places a sequential timestamp inside of each video frame using "Text Effect" strips.
 - Encapsulates all the frames into a metastrip making it easy to select, move, and group property settings.
 - Resize it, move it, change its color, add a shadow, use it with effect strips or even animate the property settings with keyframes. 
-- This script works best when using integer frame rates such as 24, 25, 30, 50, 60 fps. [See Why](https://github.com/mikeycal/vse-stopwatch-timer-for-blender/issues)
+- This script works best when using integer frame rates such as 24, 25, 30, 50, 60 fps. [See Why](https://github.com/mikeycal/vse-stopwatch-timer-for-blender/issues/2)
 
 ## Demo (Timer followed by Stopwatch)
 
