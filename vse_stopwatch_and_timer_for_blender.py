@@ -156,9 +156,13 @@ while start_at_frame <= (end_frame_of_project + add_project_frames):
             if ms <= 9:
                 final_print_string += "0"
             final_print_string += str(int(ms))
+            if int(h) < 0:
+                final_print_string = "00:00:00:00"                             # This will make sure that we end on a 0 instead of a negative #
         else:
             final_print_string += "." + ms 
-
+            if int(h) < 0:
+                final_print_string = "00:00:00.000"                            # This will make sure that we end on a 0 instead of a negative #
+                
     seq.sequences[main_seq_name].text = final_print_string
     seq.sequences[main_seq_name].font_size = time_font_size
     seq.sequences[main_seq_name].color = time_color
