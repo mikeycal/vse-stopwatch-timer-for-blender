@@ -34,6 +34,8 @@ Here is what an Editor Menu is: https://docs.blender.org/manual/en/dev/editors/
 ## Demo of Fastest way to use the script
 
 1) Drag it to your text editor
+2) Edit User Preferences
+3) Run Script
 
 ![user-fast](https://github.com/mikeycal/vse-stopwatch-timer-for-blender/blob/master/imgs/fast.gif)
 
