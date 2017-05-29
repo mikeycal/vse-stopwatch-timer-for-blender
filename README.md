@@ -31,6 +31,12 @@ Here is what an Editor Menu is: https://docs.blender.org/manual/en/dev/editors/
 
 6) Press "Run Script"
 
+## Fastest way to use the script
+
+1) Drag it to your text editor
+
+![user-fast](https://github.com/mikeycal/vse-stopwatch-timer-for-blender/blob/master/imgs/fast.gif)
+
 ## Download a Source Code Editor that supports Python
 
 At times you will need to edit this Python Script. So I would advise that you download a free Source Code editor for your platform of choice. Here are my recommendations (I use Gedit):
