@@ -44,7 +44,7 @@ At times you will need to edit this Python Script. So I would advise that you do
   - OSX: https://atom.io/, https://wiki.gnome.org/Apps/Gedit
   - GNU/Linux: https://atom.io/, https://wiki.gnome.org/Apps/Gedit, kate
 
-## Settings
+## User Preferences
 - Simply change the values listed below to alter the size and look
 - Note:  A Stopwatch counts forward [default setting]. A Timer counts in reverse - aka a countdown
 
