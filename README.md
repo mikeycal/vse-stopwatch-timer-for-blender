@@ -27,11 +27,11 @@ https://github.com/mikeycal/vse-stopwatch-timer-for-blender/blob/master/vse_stop
 
 Here is what an Editor Menu is: https://docs.blender.org/manual/en/dev/editors/
 
-5) Press "Open" and select "blender_vse_timer.py" in "Text Editor" window
+5) Press "Open" and select "vse_stopwatch_and_timer_for_blender.py" in "Text Editor" window
 
 6) Press "Run Script"
 
-## Fastest way to use the script
+## Demo of Fastest way to use the script
 
 1) Drag it to your text editor
 
